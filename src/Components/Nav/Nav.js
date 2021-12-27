@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom'
 
 import { TranslationContext } from '../../Context/translation/TranslationContext'
+import { Navigate } from '../../Common/Common'
+import { paths } from '../../Config/ConfigPaths'
 
 import {
   AppBar,
@@ -20,7 +23,7 @@ import useStyles from './StylesNav'
 
 
 export default function NavBar() {
-  const classes = useStyles();
+
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [languageAnchorEl, setlanguageAnchorEl] = React.useState(null);
 
@@ -57,6 +60,9 @@ export default function NavBar() {
   }
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
+
+  const classes = useStyles();
+
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
@@ -66,18 +72,29 @@ export default function NavBar() {
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
+      className={classes.mobileMenu}
 
     >
-
-
-      <MenuItem> {translate('nav', 'home')} </MenuItem>
-      <MenuItem> {translate('nav', 'about')} </MenuItem>
-      <MenuItem> {translate('nav', 'front')} </MenuItem>
-      <MenuItem> {translate('nav', 'back')} </MenuItem>
-      <MenuItem> {translate('nav', 'documents')} </MenuItem>
+      <Link className={classes.elementText} to={{ pathname: paths.home }} >
+        <MenuItem> {translate('nav', 'home')} </MenuItem>
+      </Link>
+      <Link className={classes.elementText} to={{ pathname: paths.aboutMe }}>
+        <MenuItem> {translate('nav', 'about')} </MenuItem>
+      </Link>
+      <Link className={classes.elementText} to={{ pathname: paths.frontEnd }}>
+        <MenuItem> {translate('nav', 'front')} </MenuItem>
+      </Link>
+      <Link className={classes.elementText} to={{ pathname: paths.backEnd }}>
+        <MenuItem> {translate('nav', 'back')} </MenuItem>
+      </Link>
+      <Link className={classes.elementText} to={{ pathname: paths.documents }}>
+        <MenuItem> {translate('nav', 'documents')} </MenuItem>
+      </Link>
+      <Link to={{pathname: paths.gitHub}}>
+      <a className={classes.elementText} href={paths.gitHub} target="_blanck">
       <MenuItem> {translate('nav', 'github')} </MenuItem>
-
-
+      </a>
+      </Link>
     </Menu>
   );
 
@@ -122,7 +139,7 @@ export default function NavBar() {
   )
 
 
- 
+
 
   return (
     <div className={classes.grow}>
@@ -132,16 +149,28 @@ export default function NavBar() {
           <div className={classes.sectionDesktop}>
             <div className={classes.menuContainer}>
               <MenuList>
-                <MenuItem className={classes.MenuItem}> {translate('nav', 'home')} </MenuItem>
-                <MenuItem className={classes.MenuItem}> {translate('nav', 'about')} </MenuItem>
-                <MenuItem className={classes.MenuItem}> {translate('nav', 'front')} </MenuItem>
-                <MenuItem className={classes.MenuItem}> {translate('nav', 'back')} </MenuItem>
-                <MenuItem className={classes.MenuItem}> {translate('nav', 'documents')} </MenuItem>
-                <MenuItem className={classes.MenuItem}> {translate('nav', 'github')} </MenuItem>
+                <Link className={classes.elementText} to={{ pathname: paths.home }}>
+                  <MenuItem className={classes.MenuItem}> {translate('nav', 'home')} </MenuItem>
+                </Link>
+                <Link className={classes.elementText} to={{ pathname: paths.aboutMe }}>
+                  <MenuItem className={classes.MenuItem}> {translate('nav', 'about')} </MenuItem>
+                </Link>
+                <Link className={classes.elementText} to={{ pathname: paths.frontEnd }}>
+                  <MenuItem className={classes.MenuItem}> {translate('nav', 'front')} </MenuItem>
+                </Link>
+                <Link className={classes.elementText} to={{ pathname: paths.backEnd }}>
+                  <MenuItem className={classes.MenuItem}> {translate('nav', 'back')} </MenuItem>
+                </Link>
+                <Link className={classes.elementText} to={{ pathname: paths.documents }}>
+                  <MenuItem className={classes.MenuItem}> {translate('nav', 'documents')} </MenuItem>
+                </Link>
+                <a className={classes.elementText} href={paths.gitHub} target="_blanck">
+                  <MenuItem className={classes.MenuItem}> {translate('nav', 'github')} </MenuItem>
+                </a>
               </MenuList>
             </div>
 
-           {formControl}
+            {formControl}
 
           </div>
 
@@ -158,7 +187,7 @@ export default function NavBar() {
             </IconButton>
 
             {formControl}
-            
+
 
 
 

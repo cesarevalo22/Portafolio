@@ -19,6 +19,12 @@ const navStyles = makeStyles((theme) => ({
   inputRoot: {
     color: 'inherit',
   },
+
+  elementText:{
+    textDecoration:"none",
+    color: theme.palette.colors.white
+  },
+
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
@@ -53,6 +59,11 @@ const navStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       display: 'none',
     },
+  },
+  mobileMenu:{
+    "& .MuiMenu-paper":{
+      backgroundColor: theme.palette.colors.mainColor
+    }
   },
 
   containerLanguages: {

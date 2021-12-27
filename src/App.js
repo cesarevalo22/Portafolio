@@ -9,7 +9,8 @@ function App() {
   const theme = createTheme({
     palette: {
       colors: {
-        mainColor: "#653fb5"
+        mainColor: "#653fb5",
+        white: "#ffffff"
       }
     }
   })
